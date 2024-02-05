@@ -1,0 +1,19 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+#service-list {
+    @apply bg-gray-800 text-white;
+}
+
+.service-list-style {
+    @apply p-4 border-b border-gray-700;
+}
+
+.service-list-style:hover {
+    @apply bg-gray-700;
+}
+
+.service-list-style:last-child {
+    @apply border-b-0;
+}

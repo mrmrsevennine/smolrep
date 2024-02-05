@@ -1,15 +1,40 @@
-The shared dependencies between the files "index.html", "css/style.css", and "css/tailwind.css" are:
+Shared Dependencies:
 
-1. **HTML Elements ID Names**: These are the unique identifiers for HTML elements that can be used in both CSS and JavaScript for styling and functionality. For example, IDs like "header", "main", "footer" might be used in the HTML file and referenced in the CSS files.
+1. **HTML Elements ID Names**: 
+   - `navbar` for the navigation bar.
+   - `main-content` for the main content of each page.
+   - `footer` for the footer of each page.
+   - `service-list` for the list of services on the services page.
+   - `book-form` for the booking form on the book page.
+   - `insurance-info` for the insurance information on the insurance page.
+   - `warranty-info` for the warranty information on the warranty page.
 
-2. **CSS Class Names**: These are the identifiers used to apply styles to HTML elements. They can be defined in both "style.css" and "tailwind.css" and used in the "index.html" file. For example, classes like ".container", ".button", ".text" might be used.
+2. **CSS Classes**:
+   - `navbar-style` for styling the navigation bar.
+   - `main-content-style` for styling the main content of each page.
+   - `footer-style` for styling the footer of each page.
+   - `service-list-style` for styling the list of services on the services page.
+   - `book-form-style` for styling the booking form on the book page.
+   - `insurance-info-style` for styling the insurance information on the insurance page.
+   - `warranty-info-style` for styling the warranty information on the warranty page.
 
-3. **Tailwind CSS Utility Classes**: These are the classes provided by the Tailwind CSS framework for styling. They are defined in "tailwind.css" and can be used in both "index.html" and "style.css". For example, utility classes like ".bg-black", ".text-white", ".p-4" might be used.
+3. **JavaScript Functions**:
+   - `loadServices()` to load the list of services on the services page.
+   - `bookService()` to handle the booking of services on the book page.
+   - `loadInsuranceInfo()` to load the insurance information on the insurance page.
+   - `loadWarrantyInfo()` to load the warranty information on the warranty page.
 
-4. **HTML Elements Tag Names**: These are the names of HTML elements like "div", "section", "button" that are used in "index.html" and can be styled in both "style.css" and "tailwind.css".
+4. **Data Schemas**:
+   - `Service` schema for the services data, which includes fields like `name`, `description`, `price`.
+   - `Booking` schema for the booking data, which includes fields like `serviceId`, `customerName`, `customerEmail`, `date`.
+   - `Insurance` schema for the insurance data, which includes fields like `name`, `description`, `price`.
+   - `Warranty` schema for the warranty data, which includes fields like `name`, `description`, `price`.
 
-5. **Media Query Breakpoints**: These are the breakpoints used for responsive design. They can be defined in both "style.css" and "tailwind.css" and affect the layout and design in "index.html". For example, breakpoints like "@media (min-width: 640px)" might be used.
+5. **Message Names**:
+   - `SERVICE_LOADED` message when the services data is loaded.
+   - `BOOKING_SUBMITTED` message when a booking is submitted.
+   - `INSURANCE_LOADED` message when the insurance data is loaded.
+   - `WARRANTY_LOADED` message when the warranty data is loaded.
 
-6. **CSS Variables**: These are the variables defined in CSS for reusing certain values. They can be defined in both "style.css" and "tailwind.css". For example, variables like "--main-color", "--secondary-color" might be used.
-
-7. **Link to CSS files**: The "index.html" file will have links to both "style.css" and "tailwind.css" in the head section to apply the styles defined in these files to the HTML elements.
+6. **External Libraries**:
+   - Tailwind CSS for styling.
