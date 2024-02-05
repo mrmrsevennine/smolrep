@@ -1,25 +1,27 @@
 ```python
-from service import Service
-from service_schema import ServiceSchema
-from service_messages import ServiceMessages
+from service import Service, ServiceSchema
+from marshmallow import ValidationError
 
 class Garantie(Service):
-    def __init__(self, service_id, service_status):
-        super().__init__(service_id, service_status)
-        self.service_schema = ServiceSchema({
-            "service_id": service_id,
-            "service_status": service_status
-        })
-
-    def add_service(self):
-        super().add_service()
-        print(ServiceMessages.ADD_SERVICE_MESSAGE.format(self.service_id))
+    def __init__(self, service_id, details):
+        super().__init__(service_id, details)
 
     def book_service(self):
-        super().book_service()
-        print(ServiceMessages.BOOK_SERVICE_MESSAGE.format(self.service_id))
+        if self.is_bookable():
+            # Code to book the service goes here
+            pass
+        else:
+            return "service-unavailable"
 
-    def update_service_status(self, new_status):
-        super().update_service_status(new_status)
-        print(ServiceMessages.UPDATE_SERVICE_STATUS_MESSAGE.format(self.service_id, self.service_status))
+    def is_bookable(self):
+        # Code to check if the service is bookable goes here
+        return True
+
+def create_garantie_service(service_id, details):
+    schema = ServiceSchema()
+    try:
+        data = schema.load(details)
+        return Garantie(service_id, data)
+    except ValidationError as err:
+        return err.messages
 ```

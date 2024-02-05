@@ -1,22 +1,24 @@
 ```python
 from service import Service
+from service_schema import ServiceSchema
+from book_service import book_service
 
 class Reparatur(Service):
-    def __init__(self, service_id, service_status):
-        super().__init__(service_id, service_status)
+    def __init__(self, service_id, details):
+        super().__init__(service_id, details)
+        self.service_schema = ServiceSchema({
+            "service_id": {"type": "string"},
+            "details": {"type": "dict"},
+        })
 
-    def add_service(self, service_data):
-        if self.validate_service_data(service_data):
-            self.service_data = service_data
-            self.service_status = "Added"
-            return self.service_messages["service_added"]
+    def book(self):
+        if self.is_available():
+            book_service(self.service_id)
+            return {"message": "service-booked"}
         else:
-            return self.service_messages["invalid_service_data"]
+            return {"message": "service-unavailable"}
 
-    def book_service(self):
-        if self.service_status == "Added":
-            self.service_status = "Booked"
-            return self.service_messages["service_booked"]
-        else:
-            return self.service_messages["service_not_bookable"]
+    def is_available(self):
+        # Implement logic to check if the service is available
+        pass
 ```
