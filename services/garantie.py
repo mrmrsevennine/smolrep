@@ -1,21 +1,25 @@
 ```python
 from service import Service
+from service_schema import ServiceSchema
+from service_messages import ServiceMessages
 
 class Garantie(Service):
-    def __init__(self, service_id, status):
-        super().__init__(service_id, status)
+    def __init__(self, service_id, service_status):
+        super().__init__(service_id, service_status)
+        self.service_schema = ServiceSchema({
+            "service_id": service_id,
+            "service_status": service_status
+        })
+
+    def add_service(self):
+        super().add_service()
+        print(ServiceMessages.ADD_SERVICE_MESSAGE.format(self.service_id))
 
     def book_service(self):
-        if self.status == "available":
-            self.status = "booked"
-            return self.service_messages["book_success"]
-        else:
-            return self.service_messages["book_fail"]
+        super().book_service()
+        print(ServiceMessages.BOOK_SERVICE_MESSAGE.format(self.service_id))
 
-    def add_service(self, service_data):
-        if self.validate_service_data(service_data):
-            self.service_data = service_data
-            return self.service_messages["add_success"]
-        else:
-            return self.service_messages["add_fail"]
+    def update_service_status(self, new_status):
+        super().update_service_status(new_status)
+        print(ServiceMessages.UPDATE_SERVICE_STATUS_MESSAGE.format(self.service_id, self.service_status))
 ```

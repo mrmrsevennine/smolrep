@@ -1,25 +1,22 @@
 ```python
 from service import Service
-from service_schema import ServiceSchema
-from service_messages import ServiceMessages
-from service_status import ServiceStatus
 
 class Reparatur(Service):
-    def __init__(self, service_id, service_schema, service_messages, service_status):
-        super().__init__(service_id, service_schema, service_messages, service_status)
+    def __init__(self, service_id, service_status):
+        super().__init__(service_id, service_status)
 
     def add_service(self, service_data):
-        if self.service_schema.validate(service_data):
+        if self.validate_service_data(service_data):
             self.service_data = service_data
-            self.service_status = ServiceStatus.ADDED
-            print(self.service_messages.get_message('service_added'))
+            self.service_status = "Added"
+            return self.service_messages["service_added"]
         else:
-            print(self.service_messages.get_message('invalid_service_data'))
+            return self.service_messages["invalid_service_data"]
 
     def book_service(self):
-        if self.service_status == ServiceStatus.ADDED:
-            self.service_status = ServiceStatus.BOOKED
-            print(self.service_messages.get_message('service_booked'))
+        if self.service_status == "Added":
+            self.service_status = "Booked"
+            return self.service_messages["service_booked"]
         else:
-            print(self.service_messages.get_message('service_not_booked'))
+            return self.service_messages["service_not_bookable"]
 ```
