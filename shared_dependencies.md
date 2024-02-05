@@ -1,40 +1,15 @@
-Shared Dependencies:
+1. Service Class: A base class that each service (Reparatur, Inspektion, Versicherung, Garantie) will inherit from. This class will contain common properties and methods that all services share.
 
-1. **HTML Elements ID Names**: 
-   - `navbar` for the navigation bar.
-   - `main-content` for the main content of each page.
-   - `footer` for the footer of each page.
-   - `service-list` for the list of services on the services page.
-   - `book-form` for the booking form on the book page.
-   - `insurance-info` for the insurance information on the insurance page.
-   - `warranty-info` for the warranty information on the warranty page.
+2. Service Schema: A data schema that defines the structure of a service. This will be used in each service file to validate and structure the data.
 
-2. **CSS Classes**:
-   - `navbar-style` for styling the navigation bar.
-   - `main-content-style` for styling the main content of each page.
-   - `footer-style` for styling the footer of each page.
-   - `service-list-style` for styling the list of services on the services page.
-   - `book-form-style` for styling the booking form on the book page.
-   - `insurance-info-style` for styling the insurance information on the insurance page.
-   - `warranty-info-style` for styling the warranty information on the warranty page.
+3. Service ID: A unique identifier for each service. This will be used in the DOM elements and JavaScript functions to identify and manipulate each service.
 
-3. **JavaScript Functions**:
-   - `loadServices()` to load the list of services on the services page.
-   - `bookService()` to handle the booking of services on the book page.
-   - `loadInsuranceInfo()` to load the insurance information on the insurance page.
-   - `loadWarrantyInfo()` to load the warranty information on the warranty page.
+4. Add Service Function: A function that will be used to add a new service. This function will be shared across all service files.
 
-4. **Data Schemas**:
-   - `Service` schema for the services data, which includes fields like `name`, `description`, `price`.
-   - `Booking` schema for the booking data, which includes fields like `serviceId`, `customerName`, `customerEmail`, `date`.
-   - `Insurance` schema for the insurance data, which includes fields like `name`, `description`, `price`.
-   - `Warranty` schema for the warranty data, which includes fields like `name`, `description`, `price`.
+5. Service Messages: A set of predefined messages that will be used to communicate the status of the services. These messages will be shared across all service files.
 
-5. **Message Names**:
-   - `SERVICE_LOADED` message when the services data is loaded.
-   - `BOOKING_SUBMITTED` message when a booking is submitted.
-   - `INSURANCE_LOADED` message when the insurance data is loaded.
-   - `WARRANTY_LOADED` message when the warranty data is loaded.
+6. Book Service Function: A function that will be used to book a service. This function will be shared across all service files.
 
-6. **External Libraries**:
-   - Tailwind CSS for styling.
+7. Service Status: A set of status values that will be used to track the status of each service. These status values will be shared across all service files. 
+
+8. Main App: The main application file that will import and use all the service files. This file will share all the dependencies with the service files.
